@@ -103,7 +103,7 @@ class ViewController: UIViewController {
             for  mem in obj.lev! {
                 let val = mem as! Member
                 print(mem)
-                print(val.age)
+                print(val.age) 
                 print(val.name)
                 
             }
