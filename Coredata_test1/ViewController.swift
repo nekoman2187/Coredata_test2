@@ -104,7 +104,7 @@ class ViewController: UIViewController {
                 let val = mem as! Member
                 print(mem)
                 print(val.age) 
-                print(val.name)
+                print(val.name!)
                 
             }
             
