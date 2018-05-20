@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		216063D520B1E50E00088875 /* sshlogin.sh in Resources */ = {isa = PBXBuildFile; fileRef = 216063D420B1E50B00088875 /* sshlogin.sh */; };
+		216063D720B1E52100088875 /* node.txt in Resources */ = {isa = PBXBuildFile; fileRef = 216063D620B1E52100088875 /* node.txt */; };
+		216063D920B1E6F000088875 /* node1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 216063D820B1E6EF00088875 /* node1.txt */; };
+		216063DD20B1E74200088875 /* sshlogin.sh in Resources */ = {isa = PBXBuildFile; fileRef = 216063DB20B1E74100088875 /* sshlogin.sh */; };
 		21EE472B20A3337100C76230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE472A20A3337100C76230 /* AppDelegate.swift */; };
 		21EE472D20A3337100C76230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE472C20A3337100C76230 /* ViewController.swift */; };
 		21EE473020A3337100C76230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21EE472E20A3337100C76230 /* Main.storyboard */; };
@@ -35,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		216063D420B1E50B00088875 /* sshlogin.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = sshlogin.sh; path = ../sshlogin.sh; sourceTree = "<group>"; };
+		216063D620B1E52100088875 /* node.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = node.txt; path = ../node.txt; sourceTree = "<group>"; };
+		216063D820B1E6EF00088875 /* node1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = node1.txt; path = ../node1.txt; sourceTree = "<group>"; };
+		216063DA20B1E74100088875 /* node1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = node1.txt; sourceTree = "<group>"; };
+		216063DB20B1E74100088875 /* sshlogin.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = sshlogin.sh; sourceTree = "<group>"; };
+		216063DC20B1E74200088875 /* node.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = node.txt; sourceTree = "<group>"; };
 		21EE472720A3337100C76230 /* Coredata_test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coredata_test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21EE472A20A3337100C76230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21EE472C20A3337100C76230 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -79,6 +89,9 @@
 		21EE471E20A3337000C76230 = {
 			isa = PBXGroup;
 			children = (
+				216063D620B1E52100088875 /* node.txt */,
+				216063D820B1E6EF00088875 /* node1.txt */,
+				216063D420B1E50B00088875 /* sshlogin.sh */,
 				21EE472920A3337100C76230 /* Coredata_test1 */,
 				21EE474120A3337200C76230 /* Coredata_test1Tests */,
 				21EE474C20A3337300C76230 /* Coredata_test1UITests */,
@@ -99,6 +112,9 @@
 		21EE472920A3337100C76230 /* Coredata_test1 */ = {
 			isa = PBXGroup;
 			children = (
+				216063DC20B1E74200088875 /* node.txt */,
+				216063DA20B1E74100088875 /* node1.txt */,
+				216063DB20B1E74100088875 /* sshlogin.sh */,
 				21EE472A20A3337100C76230 /* AppDelegate.swift */,
 				21EE472C20A3337100C76230 /* ViewController.swift */,
 				21EE472E20A3337100C76230 /* Main.storyboard */,
@@ -235,9 +251,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				216063D920B1E6F000088875 /* node1.txt in Resources */,
 				21EE473820A3337100C76230 /* LaunchScreen.storyboard in Resources */,
+				216063DD20B1E74200088875 /* sshlogin.sh in Resources */,
 				21EE473520A3337100C76230 /* Assets.xcassets in Resources */,
 				21EE473020A3337100C76230 /* Main.storyboard in Resources */,
+				216063D520B1E50E00088875 /* sshlogin.sh in Resources */,
+				216063D720B1E52100088875 /* node.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
