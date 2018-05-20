@@ -1,0 +1,27 @@
+def li
+node { 
+    stage("First") {
+        def ff = "echo_AAAA.bat"
+        stdout = bat "C:\\users\\neko\\${ff}"
+ def commit = bat (returnStdout: true, script: '''date /T''')
+
+
+    echo "${commit} "
+    println(commit)
+    }
+    def FileName = "node.txt"
+    def item = []
+    stage("second") {
+    bat  "chcp 437"
+    
+      f = new File("C:\\users\\neko\\${FileName}")
+      li = f.readLines()
+      println(li)
+      li.each { String line ->
+       println(line)
+       item.add(line)
+      }
+      
+    }
+}
+
