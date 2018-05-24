@@ -25,3 +25,36 @@ node {
     }
 }
 
+pipeline {
+agent any
+
+stages {
+    stage('First') {
+        steps {
+            parallel(
+                'mac':{
+                    node('MacSlave') {
+                        script {
+                            def ret = sh (returnStdout: true, script:'ls  /Users/nekoman ')
+
+                                    //   sh("echo ${ret}")
+                                    println ret
+
+                                    }
+                                }
+                            },
+                'windows': {
+                script {
+                    def ret = bat (returnStdout: true, script:'set')
+
+                        //   sh("echo ${ret}")
+                        println ret
+
+                        }
+                    }
+                    )
+                }
+            }
+    }
+}
+
