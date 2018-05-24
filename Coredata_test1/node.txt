@@ -1,21 +1,43 @@
-node { 
-    stage("First") {
-        def ff = "echo_AAAA.bat"
-        bat "echo ${ff}"
-        stdout = bat "C:\\users\\neko\\${ff}"
-        def result = bat (returnStdout:true ,script:C:\\users\\neko\\${ff})
-        printin(result)  
-    }
+node {
+stage("First") {
+def ff = "echo_AAAA.bat"
+bat "echo ${ff}"
+stdout = bat "C:\\users\\neko\\${ff}"
+def result = bat (returnStdout:true ,script:C:\\users\\neko\\${ff})
+printin(result)
+}
 }
 
 node {
-    stage("First") {
-        def ff = "echo_AAAA.bat"
-        stdout = bat "C:\\users\\neko\\${ff}"
- def commit = bat (returnStdout: true, script: '''date /T''')
+stage("First") {
+def ff = "echo_AAAA.bat"
+stdout = bat "C:\\users\\neko\\${ff}"
+def commit = bat (returnStdout: true, script: '''date /T''')
 
 
-    echo "${commit} "
-    println(commit)
-    }
+echo "${commit} "
+println(commit)
 }
+}
+
+//pipeline
+pipeline {
+agent any
+
+stages {
+stage('First') {
+steps {
+node('MacSlave') {
+script {
+def ret = sh (returnStdout: true, script:'ls  /Users/nekoman ')
+
+//   sh("echo ${ret}")
+println ret
+
+}
+}
+}
+}
+}
+}
+
