@@ -24,7 +24,9 @@ node {
       
     }
 }
-
+withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
+// do something with node
+}
 pipeline {
 agent any
 
@@ -56,5 +58,99 @@ stages {
                 }
             }
     }
+}
+
+def AGENT_LABEL = null
+
+node('master') {
+stage('Checkout and set agent'){
+    checkout scm
+        ### Or just use any other approach to figure out agent label: read file, etc
+        if (env.BRANCH_NAME == 'master') {
+        AGENT_LABEL = "prod"
+        } else {
+        AGENT_LABEL = "dev"
+        }
+    }
+}
+
+pipeline {
+    agent {
+    label "${AGENT_LABEL}"
+    }
+
+    stages {
+        stage('Normal build') {
+            steps {
+                echo "Running in ${AGENT_LABEL}"
+                sh "hostname"
+                }
+            }
+
+            stage ("Docker build") {
+            agent{
+                dockerfile {
+                dir 'Dockerfiles'
+                label "${AGENT_LABEL}"
+                }
+            }
+            steps{
+            sh "hostname"
+            }
+        }
+    }
+}
+
+
+pipeline {
+agent any
+
+stages {
+stage('Init') {
+
+steps {
+node('MacSlave') {
+writeFile file:"neko.txt", text:"hogehoge",  encoding:"UTF-8"
+print "WORKSPACE: ${env.WORKSPACE}"
+ws("${env.WORKSPACE}/testexec") {
+echo env.WORKSPACE
+}
+script {
+// def ret = bat (returnStdout: true, script:'set')
+echo '%WORKSPACE%'
+}
+}
+}
+}
+
+stage('First') {
+steps {
+parallel(
+'mac':{
+node('MacSlave') {
+echo env.WORKSPACE
+script {
+def ret = sh (returnStdout: true, script:'ls  /Users/nekoman ')
+
+//   sh("echo ${ret}")
+println ret
+
+}
+}
+},
+'windows': {
+node('master') {
+echo env.WORKSPACE
+script {
+def ret = bat (returnStdout: true, script:'set')
+//   sh("echo ${ret}")
+println ret
+}
+}
+}
+)
+}
+}
+}
 }
 

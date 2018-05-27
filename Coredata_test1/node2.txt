@@ -1,0 +1,75 @@
+#!groovy
+ //def execPath = '${env.BASE}${env.JOB_BASE_NAME}'
+//def github_credential = '{credentials}'
+pipeline {
+    environment {
+     execPath = "${env.BASE}\\${env.JOB_BASE_NAME}\\"
+
+   }
+    agent any
+    
+    stages {
+        stage('Init') {
+
+            steps {
+                 node('master') { // -> ubuntu
+                    
+                    
+                    script {
+                        print(execPath)
+                        def item = []
+                             f = new File("${execPath}testExec.txt")
+                             li = f.readLines()
+                             println(li)
+                                   //def str
+                                   li.each { String line ->
+                                    println(line)
+                                    def dst = line.split(" ")
+                                    print(dst[0])
+                                    if (dst[0] == "1") {
+                                        echo "exec AAAA"
+                                    } else {
+                                         echo "exec BBB"
+                                    }
+                                     item.add(line)
+                                     }
+                        echo 'exec build '
+                       // def ret = bat (returnStdout: true, script:'set')
+                       echo '%WORKSPACE%'
+                       echo 'exec scp'
+                      }
+                 }
+            }  
+        }
+            
+        stage('First') {
+            steps {
+            parallel(
+             'mac':{
+                 node('MacSlave') {
+                     echo env.WORKSPACE
+                  script {
+                  def ret = sh (returnStdout: true, script:'ls  /Users/nekoman ')
+                  
+               //   sh("echo ${ret}")
+                  println ret
+                  
+                  }
+                 }
+                 },
+            'windows': {
+                  node('master') {
+                      echo env.WORKSPACE
+                     script {
+                      def ret = bat (returnStdout: true, script:'set')
+                   //   sh("echo ${ret}")
+                      println ret
+                    }
+                  }
+                }
+                )
+            }
+        }
+    }
+}
+
