@@ -7,13 +7,13 @@ def result = bat (returnStdout:true ,script:C:\\users\\neko\\${ff})
 printin(result)
 }
 }
-
+// add 
 node {
 stage("First") {
 def ff = "echo_AAAA.bat"
 stdout = bat "C:\\users\\neko\\${ff}"
 def commit = bat (returnStdout: true, script: '''date /T''')
-
+  
 
 echo "${commit} "
 println(commit)

@@ -23,7 +23,7 @@ node {
       }
       
     }
-}
+} // sd
 withEnv(["PATH+NODE=${JENKINS_HOME}/.nvm/versions/node/v6.9.5/bin/"]) {
 // do something with node
 }
